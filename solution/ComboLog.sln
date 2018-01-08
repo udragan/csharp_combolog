@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboLog", "ComboLog\ComboL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboLog.Model", "ComboLog.Model\ComboLog.Model.csproj", "{8DFA8A20-2373-4F90-9727-A59C4B766DDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combolog.Common", "Combolog.Common\Combolog.Common.csproj", "{6DBBD65B-0F39-4E62-96BF-7D10EDA669B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{8DFA8A20-2373-4F90-9727-A59C4B766DDC}.Debug|x64.Build.0 = Debug|x64
 		{8DFA8A20-2373-4F90-9727-A59C4B766DDC}.Release|x64.ActiveCfg = Release|x64
 		{8DFA8A20-2373-4F90-9727-A59C4B766DDC}.Release|x64.Build.0 = Release|x64
+		{6DBBD65B-0F39-4E62-96BF-7D10EDA669B5}.Debug|x64.ActiveCfg = Debug|x64
+		{6DBBD65B-0F39-4E62-96BF-7D10EDA669B5}.Debug|x64.Build.0 = Debug|x64
+		{6DBBD65B-0F39-4E62-96BF-7D10EDA669B5}.Release|x64.ActiveCfg = Release|x64
+		{6DBBD65B-0F39-4E62-96BF-7D10EDA669B5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
