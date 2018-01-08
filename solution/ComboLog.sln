@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboLog", "ComboLog\ComboLog.csproj", "{823AA8A6-8DA0-4E42-9C32-54BF8E74E061}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComboLog.Model", "ComboLog.Model\ComboLog.Model.csproj", "{8DFA8A20-2373-4F90-9727-A59C4B766DDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{823AA8A6-8DA0-4E42-9C32-54BF8E74E061}.Debug|x64.Build.0 = Debug|x64
 		{823AA8A6-8DA0-4E42-9C32-54BF8E74E061}.Release|x64.ActiveCfg = Release|x64
 		{823AA8A6-8DA0-4E42-9C32-54BF8E74E061}.Release|x64.Build.0 = Release|x64
+		{8DFA8A20-2373-4F90-9727-A59C4B766DDC}.Debug|x64.ActiveCfg = Debug|x64
+		{8DFA8A20-2373-4F90-9727-A59C4B766DDC}.Debug|x64.Build.0 = Debug|x64
+		{8DFA8A20-2373-4F90-9727-A59C4B766DDC}.Release|x64.ActiveCfg = Release|x64
+		{8DFA8A20-2373-4F90-9727-A59C4B766DDC}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
