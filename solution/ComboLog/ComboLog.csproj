@@ -70,6 +70,19 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Combolog.Common\Combolog.Common.csproj">
+      <Project>{6dbbd65b-0f39-4e62-96bf-7d10eda669b5}</Project>
+      <Name>Combolog.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComboLog.Model\ComboLog.Model.csproj">
+      <Project>{8dfa8a20-2373-4f90-9727-a59c4b766ddc}</Project>
+      <Name>ComboLog.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

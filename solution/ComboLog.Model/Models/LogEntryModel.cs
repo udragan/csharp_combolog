@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace com.udragan.csharp.ComboLog.Model.Models
 {
@@ -9,7 +10,7 @@ namespace com.udragan.csharp.ComboLog.Model.Models
 	{
 		#region Constructors
 
-		public LogEntryModel(DateTime timestamp, string value)
+		public LogEntryModel(DateTime timestamp, StringBuilder value)
 		{
 			Timestamp = timestamp;
 			Value = value;
@@ -27,7 +28,7 @@ namespace com.udragan.csharp.ComboLog.Model.Models
 		/// <summary>
 		/// Gets the value of log entry.
 		/// </summary>
-		public string Value { get; private set; }
+		public StringBuilder Value { get; private set; }
 
 		#endregion
 	}
