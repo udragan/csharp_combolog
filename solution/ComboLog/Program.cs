@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using com.udragan.csharp.Combolog.Common.Interfaces;
+using com.udragan.csharp.ComboLog.Infrastructure;
 using com.udragan.csharp.ComboLog.Infrastructure.Parsers;
 using com.udragan.csharp.ComboLog.Model.Models;
 
@@ -11,18 +12,36 @@ namespace com.udragan.csharp.ComboLog
 	{
 		static void Main(string[] args)
 		{
-			string path = @"";
+			string path1 = @"";
+			string path2 = @"";
 
-			ILogParser parser = new DefaultLogParser(path);
+			ILogParser parser1 = new DefaultLogParser(path1);
+			ILogParser parser2 = new DefaultLogParser(path2);
 
 			IList<LogEntryModel> logEntries = new List<LogEntryModel>();
 
-			while (parser.HasNext())
-			{
-				logEntries.Add(parser.GetEntry());
-			}
+			List<Pipe> pipes = new List<Pipe>(4);
 
-			(parser as DefaultLogParser).Dispose();
+			pipes.Add(new Pipe(parser1));
+			pipes.Add(new Pipe(parser2));
+
+			pipes.ForEach(x => x.Take());
+
+			while (pipes.Count > 0)
+			{
+				Pipe nextPipe = pipes
+					.Aggregate((current, next) =>
+						DateTime.Compare(current.Peek().Timestamp, next.Peek().Timestamp) > 0 ? next : current);
+
+				LogEntryModel logEntry = nextPipe.Take();
+
+				logEntries.Add(logEntry);
+
+				if (nextPipe.IsDrained())
+				{
+					pipes.Remove(nextPipe);
+				}
+			}
 
 			foreach (var item in logEntries.Where(x => x != null))
 			{
@@ -31,5 +50,8 @@ namespace com.udragan.csharp.ComboLog
 
 			Console.ReadLine();
 		}
+
+
+
 	}
 }

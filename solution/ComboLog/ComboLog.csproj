@@ -55,6 +55,7 @@
     <Compile Include="Infrastructure\Parsers\DefaultLogParser.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\Pipe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,6 +8,11 @@ using com.udragan.csharp.ComboLog.Model.Models;
 
 namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <seealso cref="com.udragan.csharp.Combolog.Common.Interfaces.ILogParser" />
+	/// <seealso cref="System.IDisposable" />
 	public class DefaultLogParser : ILogParser, IDisposable
 	{
 		#region Members

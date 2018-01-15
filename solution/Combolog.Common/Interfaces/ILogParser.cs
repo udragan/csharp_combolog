@@ -6,7 +6,8 @@ namespace com.udragan.csharp.Combolog.Common.Interfaces
 	/// <summary>
 	/// Interface for log parsers.
 	/// </summary>
-	public interface ILogParser
+	/// <seealso cref="System.IDisposable" />
+	public interface ILogParser : IDisposable
 	{
 		/// <summary>
 		/// Gets the "one line" of log.
