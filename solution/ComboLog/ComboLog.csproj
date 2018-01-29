@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -75,6 +76,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="CommandLineParser, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\udragan.CommandLineParser.0.0.2-alpha\lib\CommandLineParser.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
