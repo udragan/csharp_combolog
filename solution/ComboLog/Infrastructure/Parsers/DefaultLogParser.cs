@@ -60,7 +60,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 			if (CheckMatch(match, _nextLine))
 			{
 				string value = match.Value;
-				result = new LogEntryModel(ParseTimestamp(value), new StringBuilder(_nextLine.Substring(value.Length)));
+				result = new LogEntryModel(ParseTimestamp(value), new StringBuilder(_nextLine));
 
 				if (_stream.EndOfStream)
 				{
