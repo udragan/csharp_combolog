@@ -2,3 +2,4 @@
 	ovo je nastavak istog entry-ja
 2012-11-20 13:34:20 - A2
 2012-11-20 13:34:30 - A3
+	blaaa

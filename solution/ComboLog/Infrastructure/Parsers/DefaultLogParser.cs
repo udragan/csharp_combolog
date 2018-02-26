@@ -3,6 +3,7 @@ using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using com.udragan.csharp.Combolog.Common.Extensions;
 using com.udragan.csharp.Combolog.Common.Interfaces;
 using com.udragan.csharp.ComboLog.Model.Models;
 
@@ -32,11 +33,13 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DefaultLogParser"/> class.
 		/// </summary>
-		/// <param name="path">The path.</param>
+		/// <param name="path">The path to log file.</param>
 		public DefaultLogParser(string path)
 		{
-			//TODO: check if path exists
-			_stream = new StreamReader(path);
+			_stream = File.Exists(path) ?
+				new StreamReader(path) :
+				StreamReader.Null;
+
 			_logName = Path.GetFileNameWithoutExtension(path);
 			_regex = new Regex(dateRegex, RegexOptions.ExplicitCapture | RegexOptions.Compiled);
 			_nextLine = string.Empty;
@@ -61,27 +64,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 			{
 				string value = match.Value;
 				result = new LogEntryModel(ParseTimestamp(value), new StringBuilder(_nextLine));
-
-				if (_stream.EndOfStream)
-				{
-					_nextLine = null;
-				}
-
-				while (!_stream.EndOfStream)
-				{
-					_nextLine = _stream.ReadLine();
-
-					match = _regex.Match(_nextLine);
-
-					if (CheckMatch(match, _nextLine))
-					{
-						break;
-					}
-					else
-					{
-						result.Value.AppendFormat("{0}{1}", Environment.NewLine, _nextLine);
-					}
-				}
+				result.Value.AppendLineIfNotNullOrEmpty(GetBlock());
 			}
 			else
 			{
@@ -158,6 +141,36 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 		private bool CheckMatch(Match match, string logLine)
 		{
 			return match.Success && logLine.StartsWith(match.Value);
+		}
+
+		private string GetBlock()
+		{
+			if (_stream.EndOfStream)
+			{
+				_nextLine = null;
+				return string.Empty;
+			}
+
+			StringBuilder stringBuilder = new StringBuilder();
+			Match match;
+
+			while (!_stream.EndOfStream)
+			{
+				_nextLine = _stream.ReadLine();
+
+				match = _regex.Match(_nextLine);
+
+				if (CheckMatch(match, _nextLine))
+				{
+					break;
+				}
+				else
+				{
+					stringBuilder.AppendFormat("{0}{1}", Environment.NewLine, _nextLine);
+				}
+			}
+
+			return stringBuilder.ToString();
 		}
 
 		#endregion

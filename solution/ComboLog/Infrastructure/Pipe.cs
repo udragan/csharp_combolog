@@ -14,7 +14,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure
 
 		private readonly ILogParser _parser;
 
-		private LogEntryModel _entry;
+		private LogEntryModel _nextEntry;
 		private bool _disposed;
 
 		#endregion
@@ -40,7 +40,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure
 		/// <returns></returns>
 		public LogEntryModel Peek()
 		{
-			return _entry;
+			return _nextEntry;
 		}
 
 		/// <summary>
@@ -49,8 +49,8 @@ namespace com.udragan.csharp.ComboLog.Infrastructure
 		/// <returns>Next <see cref="LogEntryModel"/> in the pipe.</returns>
 		public LogEntryModel Take()
 		{
-			LogEntryModel result = _entry;
-			_entry = _parser.HasNext() ? _parser.GetEntry() : null;
+			LogEntryModel result = _nextEntry;
+			_nextEntry = _parser.HasNext() ? _parser.GetEntry() : null;
 
 			return result;
 		}
@@ -63,7 +63,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure
 		/// </returns>
 		public bool IsDrained()
 		{
-			return _entry == null;
+			return _nextEntry == null;
 		}
 
 		#endregion

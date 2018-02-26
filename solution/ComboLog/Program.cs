@@ -24,50 +24,37 @@ namespace com.udragan.csharp.ComboLog
 			}
 
 			IList<LogEntryModel> logEntries = new List<LogEntryModel>();
-			List<Pipe> pipes = new List<Pipe>(4);
+			List<Pipe> pipes = new List<Pipe>(arguments.Inputs.Count);
 
 			foreach (string inputPath in arguments.Inputs)
 			{
 				ILogParser parser = new DefaultLogParser(inputPath);
-
 				pipes.Add(new Pipe(parser));
 			}
 
 			pipes.ForEach(x => x.Take());
 
-			while (pipes.Count > 0)
-			{
-				Pipe nextPipe = pipes
-					.Aggregate((current, next) =>
-						DateTime.Compare(current.Peek().Timestamp, next.Peek().Timestamp) > 0 ? next : current);
-
-				LogEntryModel logEntry = nextPipe.Take();
-
-				logEntries.Add(logEntry);
-
-				if (nextPipe.IsDrained())
-				{
-					pipes.Remove(nextPipe);
-				}
-			}
-
 			using (StreamWriter writer = new StreamWriter(arguments.OutputPath))
 			{
-				foreach (var item in logEntries.Where(x => x != null))
+				while (pipes.Count > 0)
 				{
-					writer.WriteLine(item.Value);
+					Pipe nextPipe = pipes
+						.Aggregate((current, next) =>
+							DateTime.Compare(current.Peek().Timestamp, next.Peek().Timestamp) > 0 ? next : current);
+
+					LogEntryModel logEntry = nextPipe.Take();
+
+					writer.WriteLine(logEntry.Value);
+
+					if (nextPipe.IsDrained())
+					{
+						pipes.Remove(nextPipe);
+					}
 				}
 			}
 
-			//foreach (var item in logEntries.Where(x => x != null))
-			//{
-			//	Console.WriteLine(string.Format("timestamp: {0} , value: {1}", item.Timestamp, item.Value));
-			//}
-
+			Console.WriteLine("Merge completed.");
 			Console.ReadLine();
 		}
-
-
-
 	}
 }

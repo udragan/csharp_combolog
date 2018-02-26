@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\StringBuilderExtensions.cs" />
     <Compile Include="Interfaces\ILogParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
