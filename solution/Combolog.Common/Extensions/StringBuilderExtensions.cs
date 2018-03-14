@@ -10,7 +10,7 @@ namespace com.udragan.csharp.Combolog.Common.Extensions
 		/// <summary>
 		/// Appends the text if not null or empty.
 		/// </summary>
-		/// <param name="value">The <see cref="StringBuilder"/> object to append the text to.</param>
+		/// <param name="value">The <see cref="StringBuilder" /> object to append the text to.</param>
 		/// <param name="text">The text.</param>
 		public static void AppendLineIfNotNullOrEmpty(this StringBuilder value, string text)
 		{

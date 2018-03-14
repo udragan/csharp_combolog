@@ -10,6 +10,11 @@ namespace com.udragan.csharp.ComboLog.Model.Models
 	{
 		#region Constructors
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="LogEntryModel"/> class.
+		/// </summary>
+		/// <param name="timestamp">The timestamp.</param>
+		/// <param name="value">The value.</param>
 		public LogEntryModel(DateTime timestamp, StringBuilder value)
 		{
 			Timestamp = timestamp;

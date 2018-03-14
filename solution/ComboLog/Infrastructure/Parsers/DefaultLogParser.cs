@@ -10,7 +10,7 @@ using com.udragan.csharp.ComboLog.Model.Models;
 namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 {
 	/// <summary>
-	/// 
+	/// Default log parser implementetion.
 	/// </summary>
 	/// <seealso cref="com.udragan.csharp.Combolog.Common.Interfaces.ILogParser" />
 	/// <seealso cref="System.IDisposable" />
@@ -52,9 +52,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 		/// <summary>
 		/// Gets the "one line" of log.
 		/// </summary>
-		/// <returns>
-		/// Log entry.
-		/// </returns>
+		/// <returns>Log entry.</returns>
 		public LogEntryModel GetEntry()
 		{
 			LogEntryModel result = new LogEntryModel(DateTime.MinValue, new StringBuilder(_logName));
@@ -78,9 +76,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 		/// Parses the timestamp.
 		/// </summary>
 		/// <param name="timestamp">The timestamp.</param>
-		/// <returns>
-		///   <see cref=" DateTime" /> representation of provided timestamp.
-		/// </returns>
+		/// <returns><see cref=" DateTime" /> representation of provided timestamp.</returns>
 		[Pure]
 		public DateTime ParseTimestamp(string timestamp)
 		{
@@ -94,9 +90,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.Parsers
 		/// <summary>
 		/// Checks if there is any entry left in the stream.
 		/// </summary>
-		/// <returns>
-		/// True if there are entries left, false otherwise.
-		/// </returns>
+		/// <returns>True if there are entries left, false otherwise.</returns>
 		[Pure]
 		public bool HasNext()
 		{

@@ -37,7 +37,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure
 		/// <summary>
 		/// Peeks next <see cref="LogEntryModel"/> in the pipe.
 		/// </summary>
-		/// <returns></returns>
+		/// <returns><see cref="LogEntryModel"/> representing next entry in the log.</returns>
 		public LogEntryModel Peek()
 		{
 			return _nextEntry;
@@ -58,9 +58,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure
 		/// <summary>
 		/// Determines whether this instance of pipe is drained.
 		/// </summary>
-		/// <returns>
-		///   <c>true</c> if this instance is drained; otherwise, <c>false</c>.
-		/// </returns>
+		/// <returns><c>true</c> if this instance is drained; otherwise, <c>false</c>.</returns>
 		public bool IsDrained()
 		{
 			return _nextEntry == null;

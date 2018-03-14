@@ -9,6 +9,10 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.CommandLineArguments
 	{
 		#region Constructors
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CommandLineArguments"/> class.
+		/// </summary>
+		/// <param name="args">The arguments.</param>
 		public CommandLineArguments(string[] args)
 			: base(args, new ConsoleLogger())
 		{ }
@@ -26,7 +30,7 @@ namespace com.udragan.csharp.ComboLog.Infrastructure.CommandLineArguments
 		/// <summary>
 		/// Gets the list of paths to input logs.
 		/// </summary>
-		[OptionList("-p", "Path to the input log file.", Required = true)]
+		[OptionList("-p", "Path to the input log file.")]
 		public IList<string> Inputs { get; private set; }
 
 		#endregion
